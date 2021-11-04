@@ -1,0 +1,56 @@
+<nav class="navbar  fixed-top navbar-expand-lg navbar-dark" style="background-color: red;">
+  <span class="badge badge-danger">BETA</span>
+</nav>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" style="top: 34px;">
+  <a class="navbar-brand" href="#">
+    <img src="../../../assets/img/logo.png" width="100" height="50" alt="Logo" />
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li  *ngIf="(auth.isAuthenticated$ | async) === false; else elseBlock">
+          <a class="btn btn-primary my-1 mr-md-3 btn-custom" (click)="signup()">{{ 'INDEX.bTEST' | translate }}</a>
+          <a class="btn btn-primary m-2 my-1 mr-md-3 btn-custom" (click)="login()">Log In</a>
+      </li>
+      <ng-template #elseBlock>
+        <a class="btn btn-primary my-1 mr-md-3 btn-custom" routerLink="./dashboard">Dashboard</a>
+        <a class="btn btn-primary m-2 my-1 mr-md-3 btn-custom" (click)="logout()">Logout</a>
+      </ng-template>
+      <li class="nav-item active my-1">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item my-1">
+        <a class="nav-link" href="#Tour">Tour</a>
+      </li>
+      <li class="nav-item my-1">
+        <a class="nav-link" href="#Funciones">Funciones</a>
+      </li>
+      <li class="nav-item my-1">
+        <a class="nav-link" href="#Precio">Precio</a>
+      </li>
+      <li class="nav-item my-1">
+        <a class="nav-link" href="#Contacto">Contacto</a>
+      </li>
+      <li class="nav-item dropdown my-1">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Idioma
+          <i class="fas fa-caret-down"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" (click)="switchLang('en')">EN</a>
+          <a class="dropdown-item" (click)="switchLang('es')">ES</a>
+        </div>
+      </li>
+      <li class="nav-item my-1">
+        <a class="nav-link" href="#">
+          <i class="fas fa-search"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

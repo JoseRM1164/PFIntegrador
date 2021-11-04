@@ -1,0 +1,133 @@
+<app-navbar-index></app-navbar-index>
+  <!--Video BG-->
+  <div class="video-background-holder">
+    <video
+      playsinline="playsinline"
+      autoplay="autoplay"
+      loop="loop"
+      muted="true"
+    >
+      <source src="../../../assets/img/graph.mp4" type="video/mp4" />
+    </video>
+    <div class="video-background-content container h-100">
+      <div class="d-flex h-100 text-center align-items-center">
+        <div class="w-100 text-white">
+          <h1 class="display-4"> {{ 'INDEX.TITLE' | translate }}</h1>
+          <p class="lead mb-0">
+            {{ 'INDEX.SUBTITLE' | translate }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--Contendio-->
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-xs align-items-center">
+        <img
+          src="../../../assets/img/inven1.png"
+          alt="Diagrama de inventarios"
+          class="img-fluid"
+        />
+      </div>
+      <div class="col-lg-6 col-xs mt-5" id="Funciones">
+        <h3 class="text-center">{{ 'INDEX.FUNCTITLE' | translate }}</h3>
+        <ul class="mt-5 list-1section fa-ul">
+          <li>
+            <span class="fa-li"><i class="fas fa-box-open"></i></span>
+            {{ 'INDEX.FUNC1' | translate }}
+          </li>
+          <li>
+            <span class="fa-li"><i class="fas fa-box-open"></i></span
+            >{{ 'INDEX.FUNC2' | translate }}
+          </li>
+          <li>
+            <span class="fa-li"><i class="fas fa-box-open"></i></span
+            >{{ 'INDEX.FUNC3' | translate }}
+          </li>
+          <li>
+            <span class="fa-li"><i class="fas fa-box-open"></i></span
+            >{{ 'INDEX.FUNC4' | translate }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <app-index-carousel></app-index-carousel>
+
+    <div class="row text-center mt-5">
+      <div class="col-lg-4 col-xs">
+        <i class="fab fa-cloudversify fa-10x"></i>
+        <h2>{{ 'INDEX.CLOUD' | translate }}</h2>
+        <p>
+          {{ 'INDEX.CLOUDINFO' | translate }}
+        </p>
+      </div>
+      <div class="col-lg-4 col-xs">
+        <i class="fas fa-truck-moving fa-10x"></i>
+        <h2>{{ 'INDEX.TRUCK' | translate }}</h2>
+        <p>
+          {{ 'INDEX.TRUCKINFO' | translate }}
+        </p>
+      </div>
+      <div class="col-lg-4 col-xs">
+        <i class="fas fa-user-shield fa-10x"></i>
+        <h2>{{ 'INDEX.SECURITY' | translate }}</h2>
+        <p>
+          {{ 'INDEX.SECURITYINFO' | translate }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row px-lg-5 py-lg-5 contact-us" id="Contacto">
+      <div class="col-lg-6 col-xs">
+        <h2 class="text-center">{{ 'INDEX.CONTACT' | translate }}</h2>
+        <form>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail1"
+              placeholder="Ingrese su Email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >{{ 'INDEX.PRIVACY' | translate }}</small
+            >
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="inputAsunto"
+              placeholder="Escriba el asunto"
+            />
+          </div>
+          <div class="form-group">
+            <label for="mensajeTextArea">{{ 'INDEX.MESSAGE' | translate }}</label>
+            <textarea
+              id="mensajeTextArea"
+              rows="3"
+              class="form-control"
+            ></textarea>
+            <button class="btn-custom" (click)="toggle()">{{ 'INDEX.bFORM' | translate }} </button>
+            <div [@popOverState] = "showing ? 'show' : 'hide'">
+              <p> {{ 'INDEX.bPOPUPTEXT' | translate }} </p>
+          </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-6 col-xs text-center m-auto">
+        <h2>{{ 'INDEX.TITLE' | translate }}</h2>
+        <h4>
+          {{ 'INDEX.BYE' | translate }} <br />
+          tel: 5511111111 <br />
+          email: contacto@sdi.com
+        </h4>
+      </div>
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>

@@ -1,0 +1,135 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "tuNegocio": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/tu-negocio",
+      "sourceRoot": "projects/tu-negocio/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/tuNegocio",
+            "index": "projects/tu-negocio/src/index.html",
+            "main": "projects/tu-negocio/src/main.ts",
+            "polyfills": "projects/tu-negocio/src/polyfills.ts",
+            "tsConfig": "projects/tu-negocio/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/tu-negocio/src/favicon.ico",
+              "projects/tu-negocio/src/assets"
+            ],
+            "styles": [
+              "projects/tu-negocio/src/styles/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.min.js",
+              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
+              "node_modules/chart.js/dist/Chart.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/tu-negocio/src/environments/environment.ts",
+                  "with": "projects/tu-negocio/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "tuNegocio:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tuNegocio:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tuNegocio:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tu-negocio/src/test.ts",
+            "polyfills": "projects/tu-negocio/src/polyfills.ts",
+            "tsConfig": "projects/tu-negocio/tsconfig.spec.json",
+            "karmaConfig": "projects/tu-negocio/karma.conf.js",
+            "assets": [
+              "projects/tu-negocio/src/favicon.ico",
+              "projects/tu-negocio/src/assets"
+            ],
+            "styles": [
+              "projects/tu-negocio/src/styles/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/tu-negocio/tsconfig.app.json",
+              "projects/tu-negocio/tsconfig.spec.json",
+              "projects/tu-negocio/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/tu-negocio/e2e/protractor.conf.js",
+            "devServerTarget": "tuNegocio:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "tuNegocio:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "tuNegocio"
+}

@@ -1,0 +1,26 @@
+{
+  "INDEX" : {
+    "bTEST": "Comienza tu prueba",
+    "TITLE": "Sistema de inventarios",
+    "SUBTITLE": "Controla tu negocio desde cualquier lugar!",
+    "FUNCTITLE": "Tus inventarios en la palma de tu mano",
+    "FUNC1": "Fácil acceso a sus diferentes inventarios.",
+    "FUNC2": "Control de movimiento de mercancía.",
+    "FUNC3": "Soporte para multiples almacenes.",
+    "FUNC4": "Estadísticas detalladas por almacén.",
+    "TITLECAROUSEL": "Conoce nuestra página",
+    "CLOUD": "La nube",
+    "CLOUDINFO": "Accede a tu negocio desde cualquier parte del mundo, solo accediendo a nuestro sistema a traves de la web.",
+    "TRUCK": "Control desde el inicio",
+    "TRUCKINFO": "Podrás tener el control de las cantidades de productos y las ventas registradas sobre ellas.",
+    "SECURITY": "Seguridad por delante",
+    "SECURITYINFO": "Todos tus datos estarán seguros gracias al respaldo y cifrado en nuestra base de datos.",
+    "CONTACT": "Contáctanos",
+    "MESSAGE": "Escribe tu mensaje",
+    "bFORM": "Enviar",
+    "bPOPUPTEXT": "Su mensaje a sido enviado",
+    "BYE":"Estamos para servirte:",
+    "PRIVACY":  "Aviso de privasidad",
+    "CONDITIONS":  "Términos de Servicio"
+  }
+}

@@ -1,0 +1,128 @@
+<div class="row">
+  <div class="col-lg col-sm p-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="mr-auto">
+        <h1 class="display-1"><strong>Nuevo Perfil</strong></h1>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- Content -->
+<form [formGroup]="modeloPerfil" (ngSubmit)="enviar()">
+  <div class="form-group">
+    <h2><label for="nombreInput1">Nombre:</label></h2>
+    <input
+      type="text"
+      formControlName="nombrePerfil"
+      class="form-control"
+      id="nombreInput1"
+      placeholder="Añadir Nombre"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <h2><label for="apellidosInput1">Apellidos:</label></h2>
+    <input
+      type="text"
+      formControlName="apellidosPerfil"
+      class="form-control"
+      id="apellidosInput1"
+      placeholder="Añadir Apellidos"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <h2><label for="correoInput1">Correo:</label></h2>
+    <input
+      type="email"
+      formControlName="correoPerfil"
+      class="form-control"
+      id="correoInput1"
+      placeholder="Añadir Correo Electr&oacute;nico"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <h2><label for="passInput1">Contraseña:</label></h2>
+    <input
+      type="password"
+      formControlName="passwordPerfil"
+      class="form-control"
+      id="passInput1"
+      placeholder="Añadir contraseña con 8 d&iacute;gitos"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <h2><label for="telefonoInput1">Teléfono:</label></h2>
+    <input
+      type="tel"
+      formControlName="telefonoPerfil"
+      class="form-control"
+      id="telefonoInput1"
+      placeholder="Añadir n&uacute;mero telef&oacute;nico de 10 d&iacute;gitos"
+      required
+    />
+  </div>
+  <h2><label>Rol:</label></h2>
+  <div class="form-group">
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="checkbox"
+      formControlName="adminCheck"
+        id="rolCheckbox1"
+        value="admin"
+      />
+      <h4>
+        <label class="form-check-label" for="rolCheckbox1">Administrador</label>
+      </h4>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="checkbox"
+      formControlName="lecturaCheck"
+        id="rolCheckbox2"
+        value="lectura"
+      />
+      <h4>
+        <label class="form-check-label" for="rolCheckbox2"
+          >Lectura</label
+        >
+      </h4>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="checkbox"
+      formControlName="escrituraCheck"
+        id="rolCheckbox3"
+        value="escritura"
+      />
+      <h4>
+        <label class="form-check-label" for="rolCheckbox3"
+          >Escritura</label
+        >
+      </h4>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        formControlName="borradoCheck"
+        id="rolCheckbox4"
+        value="borrado"
+      />
+      <h4>
+        <label class="form-check-label" for="rolCheckbox4"
+          >Borrado</label
+        >
+      </h4>
+    </div>
+  </div>
+  <button class="btn-custom btn-lg" type="submit">Submit</button>
+</form>

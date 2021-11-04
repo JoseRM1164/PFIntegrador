@@ -1,0 +1,26 @@
+{
+  "INDEX" : {
+    "bTEST": "Start your free trial",
+    "TITLE": "Sistema de Invertarios",
+    "SUBTITLE": "Control your business from anywhere!",
+    "FUNCTITLE": "Your inventories on the palm of your hand",
+    "FUNC1": "Easy access to your different inventories",
+    "FUNC2": "Control your product's movements",
+    "FUNC3": "Supports multiple warehouses",
+    "FUNC4": "Detailed statistics per warehouse",
+    "TITLECAROUSEL": "Know our website",
+    "CLOUD": "Cloud",
+    "CLOUDINFO": "Have access to you busines from anywhere in the world by accessing our system through the web",
+    "TRUCK": "Control from the very beginning",
+    "TRUCKINFO": "You'll have the control over your stock and sales",
+    "SECURITY": "Security above all else",
+    "SECURITYINFO": "All your data will be safe thanks to our database backup and encryption",
+    "CONTACT": "Contact us",
+    "MESSAGE": "Send us a message:",
+    "bFORM": "Send",
+    "bPOPUPTEXT": "You're message has been send",
+    "BYE":  "We're here to serve",
+    "PRIVACY":  "Notice of Privacy",
+    "CONDITIONS":  "Terms of use"
+  }
+}

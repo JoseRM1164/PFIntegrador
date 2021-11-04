@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-lg col-sm p-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="mr-auto">
+        <h1 class="display-1"><strong>Home</strong></h1>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- Content -->
+<div class="row pt-5">
+  <div class="col-lg-6 col-sm">
+    <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
+      [chartType]="'line'"></canvas>
+  </div>
+  <div class="col-lg-6 col-sm">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th colspan="5" class="centered-th">Inventario Reciente</th>
+          </tr>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Caducidad</th>
+            <th scope="col">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos | slice:0:4;">
+            <th scope="row">{{ producto._id }}</th>
+            <td>{{ producto.name }}</td>
+            <td>{{ producto.cantindad }}</td>
+            <td>{{ producto.caducidad }}</td>
+            <td>{{ producto.precio }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

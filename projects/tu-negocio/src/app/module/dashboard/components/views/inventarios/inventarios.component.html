@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-lg col-sm p-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="mr-auto">
+        <h1 class="display-1"><strong>Inventarios</strong></h1>
+      </div>
+      <div class="navbar-nav ml-auto navbar-buttons">
+        <a class="btn-custom" data-toggle="modal" data-target="#newModal"
+          >Nuevo Inventario</a
+        >
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- Content -->
+<!--Cartas-->
+<div class="row">
+  <app-single-inventario
+    *ngFor="let inventario of inventariosService.inventarios"
+    [inventario]="inventario"
+  ></app-single-inventario>
+  <!--Modal-->
+  <div
+    class="modal fade"
+    id="newModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="newModal"
+    aria-hidden="true"
+  >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">
+          Nuevo Inventario
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="formInventario" (ngSubmit)="enviar()">
+        <div class="modal-body mx-3">
+          <div class="text-nowrap m-3">
+            <h2 class="text-md-left">
+              Nombre :
+              <input
+                type="text"
+                formControlName="nameInven"
+                class="form-control m-4"
+                placeholder="Añadir Nombre"
+                required
+              />
+            </h2>
+            <h2 class="text-md-left">
+              Descripcion :
+              <input
+                type="text"
+                formControlName="descripcionInven"
+                class="form-control m-4"
+                placeholder="Añadir Descripcion"
+                required
+              />
+            </h2>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary my-1 mr-md-3 btn-custom">
+            Crear
+          </button>
+        </div>
+        </form>
+    </div>
+  </div>
+  </div>
+</div>
