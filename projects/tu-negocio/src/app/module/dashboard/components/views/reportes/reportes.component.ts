@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { InventariosService } from '../../../services/inventarios.service';
 import { MaxPriceInv, MaxProdInv} from '../../../../../models/inventario';
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
+import { Reporte } from '../../../../../models/reporte';
 
 declare let $: any;
 @Component({
@@ -9,9 +11,15 @@ declare let $: any;
   templateUrl: './reportes.component.html',
   styleUrls: ['./reportes.component.scss']
 })
+
 export class ReportesComponent implements OnInit {
   maxPrice: MaxPriceInv[] = [];
   maxProd: MaxProdInv[] = [];
+
+  formReporte = this.formBuild.group({
+    nameInven: ['', Validators.required],
+    descripcionInven: ['', Validators.required]
+  });
 
   public chartLabels: string[] = [];
   public chartOptions = { responsive: true };
@@ -27,7 +35,7 @@ export class ReportesComponent implements OnInit {
     { data: this.dataChartB, label: 'Productos' }
   ];
 
-  constructor(private inventariosService: InventariosService) { }
+  constructor(private inventariosService: InventariosService,private formBuild: FormBuilder) { }
 
   ngOnInit(): void {
     this.getMaxPrice();
@@ -58,5 +66,24 @@ export class ReportesComponent implements OnInit {
   
   toggleSidebar() {
     $('#sidebar').toggleClass('active');
+  }
+
+  getLang() {
+    let lang = $("html").attr("lang");
+    return lang
+  }
+
+  enviar() {
+    const nuevoReporte: Reporte = {
+      _id: 'Nuevo!',
+      name: String(this.formReporte.value.nameInven),
+      creationDate: new Date(),
+      descripcion: String(this.formReporte.value.descripcionInven),
+      lang: String(this.getLang()),
+      uID: '10'
+    };
+    this.inventariosService.addReporte(nuevoReporte)
+      .subscribe(inventario => this.inventariosService.inventarios.push(nuevoReporte));
+    $('#newModal').modal('hide');
   }
 }

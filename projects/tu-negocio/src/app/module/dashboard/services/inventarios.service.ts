@@ -10,6 +10,7 @@ import {
 
 import {Inventario, MaxPriceInv, MaxProdInv} from '../../../models/inventario';
 import {Producto} from '../../../models/producto';
+import {Reporte} from '../../../models/reporte';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,7 @@ export class InventariosService {
     return this.http.get<Inventario[]>(this.endpoint + '/rInven?lang=' + lang).pipe(retry(3), catchError(this.handleError));
   }
 
+
   getProductos(id: string): Observable<Producto[]> {
     return this.http.get<Producto[]>(this.endpoint + '/rProd?invenID=' + id).pipe(retry(3), catchError(this.handleError));
   }
@@ -71,6 +73,9 @@ export class InventariosService {
     return this.http.post<Producto>(this.endpoint + '/cProd', producto).pipe(retry(3), catchError(this.handleError));
   }
 
+  addReporte(reporte: Reporte): Observable<Reporte> {
+    return this.http.post<Reporte>(this.endpoint + '/cReporte', reporte).pipe(retry(3), catchError(this.handleError));
+  }
   getMaxProd(): Observable<MaxProdInv[]> {
     return this.http.get<MaxProdInv[]>(this.endpoint + '/maxProd').pipe(retry(3), catchError(this.handleError));
   }

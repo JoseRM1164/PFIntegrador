@@ -30,7 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavbarIndexComponent,
     IndexComponent,
     PageNotFoundComponent,
-    IndexCarouselComponent,
+    IndexCarouselComponent
   ],
   imports: [
     BrowserModule,

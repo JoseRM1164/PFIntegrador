@@ -11,7 +11,10 @@ import { SidebarComponent } from './components/partials/sidebar/sidebar.componen
 import { HomeComponent } from './components/views/home/home.component';
 import { InventariosComponent } from './components/views/inventarios/inventarios.component';
 // import { PerfilComponent } from './components/views/perfil/perfil.component';
+
 import { ReportesComponent } from './components/views/reportes/reportes.component';
+import { NewReporteComponent } from './components/views/new-reporte/new-reporte.component';
+
 import { FooterComponent } from './components/partials/footer/footer.component';
 import { NavDashboardComponent } from './components/partials/nav-dashboard/nav-dashboard.component';
 // import { NuevoPerfilComponent } from './components/views/nuevo-perfil/nuevo-perfil.component';
@@ -29,6 +32,8 @@ import { CurrencyInfoComponent } from './components/partials/currency-info/curre
     InventariosComponent,
     // PerfilComponent,
     ReportesComponent,
+    NewReporteComponent,
+
     FooterComponent,
     NavDashboardComponent,
     // NuevoPerfilComponent,
@@ -45,4 +50,5 @@ import { CurrencyInfoComponent } from './components/partials/currency-info/curre
     HttpClientModule,
   ],
 })
+
 export class DashboardModule { }
