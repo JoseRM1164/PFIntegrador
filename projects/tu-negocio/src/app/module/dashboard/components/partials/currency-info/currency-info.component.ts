@@ -21,9 +21,9 @@ export class CurrencyInfoComponent implements OnInit {
   showCurrency() {
   this.currencyService.getCurrency()
     .subscribe(currency => {
-      this.usd = 1 / currency.rates.USD;
-      this.cad = 1 / currency.rates.CAD;
-      this.eur = 1 / currency.rates.EUR;
+      this.usd = 23.91 / currency.rates.USD;
+      this.cad = 23.91 / currency.rates.CAD;
+      this.eur = 23.91 / currency.rates.EUR;
     });
   }
 }
