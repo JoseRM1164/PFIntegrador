@@ -47,7 +47,7 @@ export class ReportesComponent implements OnInit {
     .subscribe(maxprices => {
       this.maxPrice = maxprices;
       this.maxPrice.forEach(price => {
-        this.chartLabels.push(price._id);
+        this.chartLabels.push(price.name);
         this.dataChart.push(price.sumTotal);
       });
     });
