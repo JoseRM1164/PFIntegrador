@@ -18,7 +18,14 @@ export class ReportesComponent implements OnInit {
 
   formReporte = this.formBuild.group({
     nameInven: ['', Validators.required],
-    descripcionInven: ['', Validators.required]
+    descripcionInven: ['', Validators.required],
+  });
+  formInfo = this.formBuild.group({
+    nameInven: ['', Validators.required],
+    chooseInven: ['', Validators.required],
+    topInven: ['', Validators.required],
+    tipoInven: ['', Validators.required],
+    varInven: ['', Validators.required],
   });
 
   public chartLabels: string[] = [];
@@ -73,12 +80,20 @@ export class ReportesComponent implements OnInit {
     return lang
   }
 
+  qForm(){
+    let chooseInven = this.formInfo.value.chooseInven
+    let topInven = this.formInfo.value.topInven
+    let tipoInven = this.formInfo.value.tipoInven
+    let varInven = this.formInfo.value.nameInven 
+    return 'inventario.aggregate([\n{$group:{"name":'+ chooseInven+', '+varInven+':{$'+tipoInven+':"$'+varInven+'}}},\n {$limit: '+topInven+'}])'
+  }
+
   enviar() {
     const nuevoReporte: Reporte = {
       _id: 'Nuevo!',
-      name: String(this.formReporte.value.nameInven),
+      name: String(this.formInfo.value.nameInven),
       creationDate: new Date(),
-      descripcion: String(this.formReporte.value.descripcionInven),
+      descripcion: String(this.qForm()),
       lang: String(this.getLang()),
       uID: '10'
     };
