@@ -29,16 +29,6 @@ export class InventariosService {
     lang: 'none',
     uID: 'none'
   };
-
-  currentReporte: Reporte = {
-    _id: 'none',
-    name: 'none',
-    reportes: 'none',
-    creationDate: new Date(),
-    lang: 'none',
-    uID: 'none'
-  };
-
   constructor(private http: HttpClient) {}
 
   accederInventario(inventario: Inventario) {

@@ -9,5 +9,6 @@ let ReportesSchema = new Schema({
   uID: String,
 });
 
-let reportes = mongoose.model('Reportes', ReportesSchema, 'Reportes')
+
+let reportes = mongoose.model('Reporte', ReportesSchema, 'Reporte')
 module.exports = reportes;

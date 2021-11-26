@@ -84,24 +84,32 @@ export class ReportesComponent implements OnInit {
     let chooseInven = this.formInfo.value.chooseInven
     let topInven = this.formInfo.value.topInven
     let tipoInven = this.formInfo.value.tipoInven
-    let varInven = this.formInfo.value.nameInven 
-    if (tipoInven)
-      return 'productos.aggregate([\n[{$sort: {'+varInven+': -1}}, {$limit: '+topInven+'}]])'
-    else
-      return 'productos.aggregate([\n[{$sort: {'+varInven+': 1}}, {$limit: '+topInven+'}]])'
+    let varInven = this.formInfo.value.varInven
+    if (tipoInven){
+      console.log('{$sort: {'+varInven+': -1}}, {$limit: '+topInven+'}')
+      return '{$sort: {'+varInven+': -1}}, {$limit: '+topInven+'}'
+    }
+    else{
+      console.log('{$sort: {'+varInven+': 1}}, {$limit: '+topInven+'}')
+      return '{$sort: {'+varInven+': 1}}, {$limit: '+topInven+'}'
+    }
   }
+
+
 
   enviar() {
     const nuevoReporte: Reporte = {
       _id: 'Nuevo!',
       name: String(this.formInfo.value.nameInven),
       creationDate: new Date(),
-      reportes: String(this.qForm()),
+      descripcion: String(this.qForm()),
       lang: String(this.getLang()),
       uID: '10'
     };
+
+    console.log(nuevoReporte)
     this.inventariosService.addReporte(nuevoReporte)
-      .subscribe(inventario => this.inventariosService.reportes.push(nuevoReporte));
+      .subscribe(reportes => this.inventariosService.inventarios.push(nuevoReporte));
     $('#newModal').modal('hide');
   }
 }
