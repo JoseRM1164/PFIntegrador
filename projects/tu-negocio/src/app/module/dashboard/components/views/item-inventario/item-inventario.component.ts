@@ -80,6 +80,7 @@ export class ItemInventarioComponent implements OnInit {
       this.dataTable.DataTable().rows.add(this.tableData); // Add new data
       this.dataTable.DataTable().columns.adjust().draw();
     });
+    window.location.reload();
   }
 
 
@@ -98,5 +99,6 @@ export class ItemInventarioComponent implements OnInit {
         this.dataTable.DataTable().row.add(nuevoProducto).draw();
       });
     $('#ProductoModal').modal('hide');
+    window.location.reload();
   }
 }

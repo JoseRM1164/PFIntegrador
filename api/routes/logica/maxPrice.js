@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
 	Productos.aggregate([
 		{
 			$group: {
-				name: "$name",
+				_id: "$name",
 				sumTotal: {
 					$sum: {
 						$multiply: ["$cantindad", "$precio"]

@@ -48,8 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     AuthModule.forRoot({
-      domain: 'tunegocio.us.auth0.com',
-      clientId: '6Nk6ueM27Am4htjttAMteQDeoSex93jl'
+      domain: 'dev-p1k3vc1q.us.auth0.com',
+      clientId: 'C4bMoObjeeBli36w2M4xEOJklexyrWmf'
     }),
   ],
   providers: [],

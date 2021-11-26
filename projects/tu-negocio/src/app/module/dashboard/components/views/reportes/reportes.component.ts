@@ -25,14 +25,15 @@ export class ReportesComponent implements OnInit {
   public chartOptions = { responsive: true };
   public dataChart: number[] = [];
   public chartData = [
-    { data: this.dataChart, label: 'Inventarios' }
+    { data: this.dataChart, label: 'Precio total de productos' }
   ];
 
   public chartLabelsB: string[] = [];
+  public chartNameB: string[] = [];
   public chartOptionsB = { responsive: true };
   public dataChartB: number[] = [];
   public chartDataB = [
-    { data: this.dataChartB, label: 'Productos' }
+    { data: this.dataChartB, label: 'Inventarios' }
   ];
 
   constructor(private inventariosService: InventariosService,private formBuild: FormBuilder) { }
@@ -47,7 +48,7 @@ export class ReportesComponent implements OnInit {
     .subscribe(maxprices => {
       this.maxPrice = maxprices;
       this.maxPrice.forEach(price => {
-        this.chartLabels.push(price.name);
+        this.chartLabels.push(price._id);
         this.dataChart.push(price.sumTotal);
       });
     });
@@ -59,6 +60,7 @@ export class ReportesComponent implements OnInit {
       this.maxProd = maxprods;
       this.maxProd.forEach(prods => {
         this.chartLabelsB.push(prods._id);
+        this.chartNameB.push(prods.name);
         this.dataChartB.push(prods.totalUniqueProducts);
       });
     });
