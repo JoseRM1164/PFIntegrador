@@ -52,10 +52,11 @@ aria-hidden="true"
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <form [formGroup]="formReporte" (ngSubmit)="enviar()">
+  <!--Form nuevo reporte-->
+  <form [formGroup]="formInfo" (ngSubmit)="enviar()">
     <div class="modal-body mx-3">
       <div class="text-nowrap m-3">
-        <h2 class="text-md-left">
+        <h3 class="text-md-left">
           Nombre :
           <input
             type="text"
@@ -64,17 +65,57 @@ aria-hidden="true"
             placeholder="Añadir Nombre"
             required
           />
-        </h2>
-        <h2 class="text-md-left">
-          Descripcion :
+        </h3>
+        <h3 class="text-md-left">
+          Inventario que se desea usar:
           <input
             type="text"
-            formControlName="descripcionInven"
+            formControlName="chooseInven"
             class="form-control m-4"
-            placeholder="Añadir Descripcion"
+            placeholder="Nombre inventario"
             required
           />
-        </h2>
+        </h3>
+        <h3 class="text-md-left">
+          Que top quieres:
+          <input
+            type="text"
+            formControlName="topInven"
+            class="form-control m-4"
+            placeholder="7 o 5 o 3"
+            required
+          />
+        </h3>
+        <h3 class="text-md-left">Tipo:
+          <label class="m-4"><input
+            type="checkbox"
+            formControlName="tipoInven"
+            class="form-control"
+            value="max"
+            required
+            />Max
+          </label>
+  
+          <label class="m-4"><input
+            type="checkbox"
+            formControlName="tipoInven"
+            class="form-control"
+            value="min"
+            required
+            />Min
+          </label>
+        </h3>
+        <h3 class="text-md-left">
+          Que variable quieres:
+          <input
+          type="text"
+          formControlName="varInven"
+          class="form-control m-4"
+          placeholder="precio o fecha o cantidad"
+          required
+        />
+        </h3>
+
       </div>
     </div>
     <div class="modal-footer d-flex justify-content-center">

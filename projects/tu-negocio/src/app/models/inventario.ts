@@ -18,3 +18,15 @@ export interface MaxProdInv {
   name : string;
   totalUniqueProducts: number;
 }
+
+
+export interface qPersoInv {
+  _id : String;
+  count : number;
+  descripcion : string;
+  name : String;
+}
+
+export interface ResultQ{
+  query : String;
+}

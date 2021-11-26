@@ -8,7 +8,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 
-import {Inventario, MaxPriceInv, MaxProdInv} from '../../../models/inventario';
+import {Inventario, MaxPriceInv, MaxProdInv, qPersoInv,ResultQ} from '../../../models/inventario';
 import {Producto} from '../../../models/producto';
 import {Reporte} from '../../../models/reporte';
 
@@ -19,6 +19,7 @@ export class InventariosService {
   private endpoint = 'http://localhost:4000/api';
 
   inventarios: Inventario[] = [];
+  reportes: Reporte[] = [];
 
   currentInventario: Inventario = {
     _id: 'none',
@@ -28,7 +29,6 @@ export class InventariosService {
     lang: 'none',
     uID: 'none'
   };
-
   constructor(private http: HttpClient) {}
 
   accederInventario(inventario: Inventario) {
@@ -69,6 +69,7 @@ export class InventariosService {
     return this.http.post<Inventario>(this.endpoint + '/cInven', inventario).pipe(retry(3), catchError(this.handleError));
   }
 
+
   addProducto(producto: Producto): Observable<Producto> {
     return this.http.post<Producto>(this.endpoint + '/cProd', producto).pipe(retry(3), catchError(this.handleError));
   }
@@ -86,6 +87,14 @@ export class InventariosService {
 
   deleteProducto(idprod: string): Observable<Producto> {
     return this.http.delete<Producto>(this.endpoint + '/dProd?invenID=' + idprod).pipe(retry(3), catchError(this.handleError));
+  }
+
+  getQuerysPersonalizados(): Observable<qPersoInv[]> {
+    return this.http.get<qPersoInv[]>(this.endpoint + '/qp').pipe(retry(3), catchError(this.handleError));
+  }
+
+  getDataQuery(query: String): Observable<ResultQ> {
+    return this.http.get<ResultQ>(this.endpoint + '/qresult='+ query ).pipe(retry(3), catchError(this.handleError));
   }
 }
 

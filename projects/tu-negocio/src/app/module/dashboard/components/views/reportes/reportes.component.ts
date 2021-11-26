@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { InventariosService } from '../../../services/inventarios.service';
-import { MaxPriceInv, MaxProdInv} from '../../../../../models/inventario';
+import { MaxPriceInv, MaxProdInv, qPersoInv} from '../../../../../models/inventario';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Reporte } from '../../../../../models/reporte';
 
@@ -15,10 +15,18 @@ declare let $: any;
 export class ReportesComponent implements OnInit {
   maxPrice: MaxPriceInv[] = [];
   maxProd: MaxProdInv[] = [];
+  qPerso : qPersoInv[] = [];
 
   formReporte = this.formBuild.group({
     nameInven: ['', Validators.required],
-    descripcionInven: ['', Validators.required]
+    descripcionInven: ['', Validators.required],
+  });
+  formInfo = this.formBuild.group({
+    nameInven: ['', Validators.required],
+    chooseInven: ['', Validators.required],
+    topInven: ['', Validators.required],
+    tipoInven: ['', Validators.required],
+    varInven: ['', Validators.required],
   });
 
   public chartLabels: string[] = [];
@@ -41,6 +49,7 @@ export class ReportesComponent implements OnInit {
   ngOnInit(): void {
     this.getMaxPrice();
     this.getMaxProd();
+    this.getQuerysPersonalizados();
   }
 
   getMaxPrice(): void {
@@ -65,7 +74,23 @@ export class ReportesComponent implements OnInit {
       });
     });
   }
+
+  getQuerysPersonalizados(): void {
+    this.inventariosService.getQuerysPersonalizados()
+    .subscribe(maxprod => {
+      this.qPerso = maxprod;
+      this.qPerso.forEach(async prods => {
+          console.log(prods.descripcion)
+        await this.getResult(prods.descripcion)
+
+
+      });
+    });
+  }
   
+  async getResult(descripcion:String): Promise<void> {
+    await this.inventariosService.getDataQuery(descripcion)
+  }
   toggleSidebar() {
     $('#sidebar').toggleClass('active');
   }
@@ -75,17 +100,36 @@ export class ReportesComponent implements OnInit {
     return lang
   }
 
+  qForm(){
+    let chooseInven = this.formInfo.value.chooseInven
+    let topInven = this.formInfo.value.topInven
+    let tipoInven = this.formInfo.value.tipoInven
+    let varInven = this.formInfo.value.varInven
+    if (tipoInven){
+      console.log('{$sort: {'+varInven+': -1}}, {$limit: '+topInven+'}')
+      return '{$sort: {'+varInven+': -1}}, {$limit: '+topInven+'}'
+    }
+    else{
+      console.log('{$sort: {'+varInven+': 1}}, {$limit: '+topInven+'}')
+      return '{$sort: {'+varInven+': 1}}, {$limit: '+topInven+'}'
+    }
+  }
+
+
+
   enviar() {
     const nuevoReporte: Reporte = {
       _id: 'Nuevo!',
-      name: String(this.formReporte.value.nameInven),
+      name: String(this.formInfo.value.nameInven),
       creationDate: new Date(),
-      descripcion: String(this.formReporte.value.descripcionInven),
+      descripcion: String(this.qForm()),
       lang: String(this.getLang()),
       uID: '10'
     };
+
+    console.log(nuevoReporte)
     this.inventariosService.addReporte(nuevoReporte)
-      .subscribe(inventario => this.inventariosService.inventarios.push(nuevoReporte));
+      .subscribe(reportes => this.inventariosService.inventarios.push(nuevoReporte));
     $('#newModal').modal('hide');
   }
 }

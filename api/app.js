@@ -46,6 +46,8 @@ let rProd = require("./routes/productos/rProductos");
 let maxPrice = require("./routes/logica/maxPrice");
 let maxProd = require("./routes/logica/maxProd");
 let cReporte = require("./routes/reportes/createReporte")
+let cReportePerzo = require("./routes/reportes/reportePerso.js")
+let cReporteResult = require("./routes/reportes/reporteResult.js")
 
 app.use("/", indexRouter);
 app.use("/api/cInven", cInventario);
@@ -57,6 +59,8 @@ app.use("/api/rProd", rProd);
 app.use("/api/maxPrice", maxPrice);
 app.use("/api/maxProd", maxProd);
 app.use("/api/cReporte",cReporte)
+app.use("/api/qp",cReportePerzo)
+app.use("/api/qresult", cReporteResult)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
