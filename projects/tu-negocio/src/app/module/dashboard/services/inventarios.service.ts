@@ -19,11 +19,21 @@ export class InventariosService {
   private endpoint = 'http://localhost:4000/api';
 
   inventarios: Inventario[] = [];
+  reportes: Reporte[] = [];
 
   currentInventario: Inventario = {
     _id: 'none',
     name: 'none',
     descripcion: 'none',
+    creationDate: new Date(),
+    lang: 'none',
+    uID: 'none'
+  };
+
+  currentReporte: Reporte = {
+    _id: 'none',
+    name: 'none',
+    reportes: 'none',
     creationDate: new Date(),
     lang: 'none',
     uID: 'none'

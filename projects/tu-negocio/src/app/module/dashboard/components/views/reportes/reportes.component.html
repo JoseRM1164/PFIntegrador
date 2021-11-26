@@ -76,33 +76,15 @@ aria-hidden="true"
             required
           />
         </h3>
-        <h3 class="text-md-left">Top:
-          <label class="m-4"><input
-            type="checkbox"
+        <h3 class="text-md-left">
+          Que top quieres:
+          <input
+            type="text"
             formControlName="topInven"
-            class="form-control"
-            value="7"
+            class="form-control m-4"
+            placeholder="7 o 5 o 3"
             required
-            />Top 7
-          </label>
-  
-          <label class="m-4"><input
-            type="checkbox"
-            formControlName="topInven"
-            class="form-control"
-            value="5"
-            required
-            />Top 5
-          </label>
-  
-          <label class="m-4"><input
-            type="checkbox"
-            formControlName="topInven"
-            class="form-control"
-            value="3"
-            required
-            />Top 3
-          </label>
+          />
         </h3>
         <h3 class="text-md-left">Tipo:
           <label class="m-4"><input
@@ -123,33 +105,15 @@ aria-hidden="true"
             />Min
           </label>
         </h3>
-        <h3 class="text-md-left">Variable:
-          <label class="m-2"><input
-            type="checkbox"
-            formControlName="varInven"
-            class="form-control"
-            value="precio"
-            required
-            />Precio
-          </label>
-  
-          <label class="m-2"><input
-            type="checkbox"
-            formControlName="varInven"
-            class="form-control"
-            value="cantidad"
-            required
-            />Cantidad
-          </label>
-
-          <label class="m-2"><input
-            type="checkbox"
-            formControlName="varInven"
-            class="form-control"
-            value="caducidad"
-            required
-            />Fecha C.
-          </label>
+        <h3 class="text-md-left">
+          Que variable quieres:
+          <input
+          type="text"
+          formControlName="varInven"
+          class="form-control m-4"
+          placeholder="precio o fechaC o cantidad"
+          required
+        />
         </h3>
 
       </div>

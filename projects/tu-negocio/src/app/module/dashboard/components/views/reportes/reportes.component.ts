@@ -85,7 +85,10 @@ export class ReportesComponent implements OnInit {
     let topInven = this.formInfo.value.topInven
     let tipoInven = this.formInfo.value.tipoInven
     let varInven = this.formInfo.value.nameInven 
-    return 'inventario.aggregate([\n{$group:{"name":'+ chooseInven+', '+varInven+':{$'+tipoInven+':"$'+varInven+'}}},\n {$limit: '+topInven+'}])'
+    if (tipoInven)
+      return 'productos.aggregate([\n[{$sort: {'+varInven+': -1}}, {$limit: '+topInven+'}]])'
+    else
+      return 'productos.aggregate([\n[{$sort: {'+varInven+': 1}}, {$limit: '+topInven+'}]])'
   }
 
   enviar() {
@@ -93,12 +96,12 @@ export class ReportesComponent implements OnInit {
       _id: 'Nuevo!',
       name: String(this.formInfo.value.nameInven),
       creationDate: new Date(),
-      descripcion: String(this.qForm()),
+      reportes: String(this.qForm()),
       lang: String(this.getLang()),
       uID: '10'
     };
     this.inventariosService.addReporte(nuevoReporte)
-      .subscribe(inventario => this.inventariosService.inventarios.push(nuevoReporte));
+      .subscribe(inventario => this.inventariosService.reportes.push(nuevoReporte));
     $('#newModal').modal('hide');
   }
 }

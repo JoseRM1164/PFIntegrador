@@ -2,7 +2,7 @@ export interface Reporte {
     _id: string;
     name: string;
     creationDate: Date;
-    descripcion: string;
+    reportes: string;
     lang: string;
     uID: string;
   }
