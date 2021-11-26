@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   public chartOptions = { responsive: true };
   public dataChart: number[] = [];
   public chartData = [
-    { data: this.dataChart, label: 'Inventarios' }
+    { data: this.dataChart, label: 'Precio total de Productos' }
   ];
 
   constructor(private inventariosService: InventariosService) {

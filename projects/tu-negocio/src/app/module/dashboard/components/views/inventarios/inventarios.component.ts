@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 
 import { InventariosService } from '../../../services/inventarios.service';
@@ -51,5 +51,6 @@ export class InventariosComponent implements OnInit {
     this.inventariosService.addInventario(nuevoInven)
       .subscribe(inventario => this.inventariosService.inventarios.push(nuevoInven));
     $('#newModal').modal('hide');
+    window.location.reload();
   }
 }

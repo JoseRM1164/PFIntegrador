@@ -9,10 +9,12 @@ export interface Inventario {
 
 export interface MaxPriceInv {
   _id: string;
+  name : string;
   sumTotal: number;
 }
 
 export interface MaxProdInv {
   _id: string;
+  name : string;
   totalUniqueProducts: number;
 }

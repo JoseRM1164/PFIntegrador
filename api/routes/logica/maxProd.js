@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
 			$project: {
 				"_id": {
 					"$toString": "$_id"
-				}
+				},
+				name: "$name"
 			}
 		},
 		{

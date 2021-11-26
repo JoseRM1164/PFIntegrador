@@ -8,7 +8,7 @@ export interface Reporte {
   }
   
   export interface MaxPriceInv {
-    _id: string;
+    name: string;
     sumTotal: number;
   }
   
