@@ -16,3 +16,9 @@ export interface MaxProdInv {
   _id: string;
   totalUniqueProducts: number;
 }
+
+
+export interface qPersoInv {
+  _id : string;
+  count : number;
+}

@@ -8,7 +8,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 
-import {Inventario, MaxPriceInv, MaxProdInv} from '../../../models/inventario';
+import {Inventario, MaxPriceInv, MaxProdInv, qPersoInv} from '../../../models/inventario';
 import {Producto} from '../../../models/producto';
 import {Reporte} from '../../../models/reporte';
 
@@ -69,6 +69,7 @@ export class InventariosService {
     return this.http.post<Inventario>(this.endpoint + '/cInven', inventario).pipe(retry(3), catchError(this.handleError));
   }
 
+
   addProducto(producto: Producto): Observable<Producto> {
     return this.http.post<Producto>(this.endpoint + '/cProd', producto).pipe(retry(3), catchError(this.handleError));
   }
@@ -86,6 +87,10 @@ export class InventariosService {
 
   deleteProducto(idprod: string): Observable<Producto> {
     return this.http.delete<Producto>(this.endpoint + '/dProd?invenID=' + idprod).pipe(retry(3), catchError(this.handleError));
+  }
+
+  getQuerysPersonalizados(): Observable<qPersoInv[]> {
+    return this.http.get<qPersoInv[]>(this.endpoint + '/qp').pipe(retry(3), catchError(this.handleError));
   }
 }
 

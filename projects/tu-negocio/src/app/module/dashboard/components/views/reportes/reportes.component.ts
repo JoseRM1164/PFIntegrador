@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { InventariosService } from '../../../services/inventarios.service';
-import { MaxPriceInv, MaxProdInv} from '../../../../../models/inventario';
+import { MaxPriceInv, MaxProdInv, qPersoInv} from '../../../../../models/inventario';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Reporte } from '../../../../../models/reporte';
 
@@ -15,6 +15,7 @@ declare let $: any;
 export class ReportesComponent implements OnInit {
   maxPrice: MaxPriceInv[] = [];
   maxProd: MaxProdInv[] = [];
+  qPerso : qPersoInv[] = [];
 
   formReporte = this.formBuild.group({
     nameInven: ['', Validators.required],
@@ -67,6 +68,16 @@ export class ReportesComponent implements OnInit {
       this.maxProd.forEach(prods => {
         this.chartLabelsB.push(prods._id);
         this.dataChartB.push(prods.totalUniqueProducts);
+      });
+    });
+  }
+
+  getQuerysPersonalizados(): void {
+    this.inventariosService.getQuerysPersonalizados()
+    .subscribe(maxprod => {
+      this.qPerso = maxprod;
+      this.qPerso.forEach(prods => {
+          console.log(prods)
       });
     });
   }
