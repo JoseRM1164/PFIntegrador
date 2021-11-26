@@ -48,6 +48,7 @@ export class ReportesComponent implements OnInit {
   ngOnInit(): void {
     this.getMaxPrice();
     this.getMaxProd();
+    this.getQuerysPersonalizados();
   }
 
   getMaxPrice(): void {
@@ -76,12 +77,18 @@ export class ReportesComponent implements OnInit {
     this.inventariosService.getQuerysPersonalizados()
     .subscribe(maxprod => {
       this.qPerso = maxprod;
-      this.qPerso.forEach(prods => {
-          console.log(prods)
+      this.qPerso.forEach(async prods => {
+          console.log(prods.descripcion)
+        await this.getResult(prods.descripcion)
+
+
       });
     });
   }
   
+  async getResult(descripcion:String): Promise<void> {
+    await this.inventariosService.getDataQuery(descripcion)
+  }
   toggleSidebar() {
     $('#sidebar').toggleClass('active');
   }

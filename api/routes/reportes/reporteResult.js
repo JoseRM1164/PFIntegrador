@@ -4,9 +4,11 @@ const router = express.Router();
 let Reporte = require('../../models/reportes');
 
 router.get('/', async (req, res) => {
+
+    let query = req.query.query;
 	Reporte.aggregate([
 		{
-			$project: {name:1,descripcion:1}
+			query
         }
 	], (err, result) => {
 			if(err) res.status(400);

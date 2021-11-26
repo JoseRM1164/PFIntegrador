@@ -8,7 +8,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 
-import {Inventario, MaxPriceInv, MaxProdInv, qPersoInv} from '../../../models/inventario';
+import {Inventario, MaxPriceInv, MaxProdInv, qPersoInv,ResultQ} from '../../../models/inventario';
 import {Producto} from '../../../models/producto';
 import {Reporte} from '../../../models/reporte';
 
@@ -91,6 +91,10 @@ export class InventariosService {
 
   getQuerysPersonalizados(): Observable<qPersoInv[]> {
     return this.http.get<qPersoInv[]>(this.endpoint + '/qp').pipe(retry(3), catchError(this.handleError));
+  }
+
+  getDataQuery(query: String): Observable<ResultQ> {
+    return this.http.get<ResultQ>(this.endpoint + '/qresult='+ query ).pipe(retry(3), catchError(this.handleError));
   }
 }
 

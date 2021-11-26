@@ -19,6 +19,12 @@ export interface MaxProdInv {
 
 
 export interface qPersoInv {
-  _id : string;
+  _id : String;
   count : number;
+  descripcion : string;
+  name : String;
+}
+
+export interface ResultQ{
+  query : String;
 }
